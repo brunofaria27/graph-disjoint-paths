@@ -22,7 +22,7 @@ def main():
 
     graph = Graph(num_vertices, vertice_origem, vertice_destino)
     create_graph(arq, graph)
-    graph.printGraph()
+    caminhos, maximo = graph.get_disjoint_paths(vertice_origem, vertice_destino)
 
 
 # Programa principal
