@@ -20,7 +20,6 @@ class Graph:
         adjacencyList = self.create_adjacency_list()
 
         return paths, max_paths
-        
     
     def printGraph(self):
         for i in range(0, len(self.graph)):
