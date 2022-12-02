@@ -32,6 +32,7 @@ class Graph:
         # Mark the source node as visited and enqueue it
         queue.append(s)
         visited[s] = True
+        path = list()
 
         # Standard BFS Loop
         while queue:
@@ -66,6 +67,8 @@ class Graph:
         # This array is filled by BFS and to store path
         parent = [-1]*(aux_graph.num_nodes)
         max_flow = 0  # There is no flow initially
+        paths = []
+        path_index = 0
 
         # Augment the flow while there is path from source to sink
         while aux_graph.search(source, sink, parent):
@@ -74,11 +77,16 @@ class Graph:
             # path filled by BFS. Or we can say find the maximum flow
             # through the path found.
             path_flow = float("Inf")
+            path = []
             s = sink
             while (s != source):
                 path_flow = min(path_flow, aux_graph.is_edge(parent[s], s))
+                path.append(s)
                 s = parent[s]
 
+            path.append(source)
+            path.reverse()
+            paths.append(path)
             # Add path flow to overall flow
             max_flow += path_flow
 
@@ -91,7 +99,7 @@ class Graph:
                 aux_graph.add_edge(v, u)
                 v = parent[v]
 
-        return max_flow
+        return max_flow, paths
 
     def print(self):
         for i in range(self.num_nodes):

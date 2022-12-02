@@ -22,8 +22,11 @@ def main():
 
     graph = Graph(arq)
 
+    max_paths, paths = graph.get_disjoint_paths(int(origin), int(destiny))
     print ("There can be maximum %d edge-disjoint paths from %d to %d" %
-			(graph.get_disjoint_paths(int(origin), int(destiny)), int(origin), int(destiny)))
+			(max_paths, int(origin), int(destiny)))
+
+    print("paths:", paths)
 
 
 # Programa principal
