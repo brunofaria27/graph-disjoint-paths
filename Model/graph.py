@@ -1,6 +1,5 @@
 from copy import deepcopy
 
-
 class Graph:
     def __init__(self, arq):
         self.read_graph(arq)
