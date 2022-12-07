@@ -17,13 +17,17 @@ class Graph:
     def remove_edge(self, u, v):
         self.adj_list[u].remove(v)
 
+    def is_edge(self, u, v):
+        if v in self.adj_list[u]:
+            return 1
+        return 0
+
     def search(self, s, t, parent):
         visited = [False] * (self.num_nodes)
         queue = []
 
         queue.append(s)
         visited[s] = True
-        path = list()
 
         while queue:
             u = queue.pop(0)
@@ -32,12 +36,9 @@ class Graph:
                     queue.append(val)
                     visited[val] = True
                     parent[val] = u
-        return True if visited[t] else False
-
-    def is_edge(self, u, v):
-        if v in self.adj_list[u]:
-            return 1
-        return 0
+        if visited[t]:
+            return True
+        return False
 
     def get_disjoint_paths(self, source, sink):
         aux_graph = deepcopy(self)

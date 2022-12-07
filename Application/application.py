@@ -69,13 +69,13 @@ def main():
     origin = sys.argv[2]
     destiny = sys.argv[3]
 
-    create_complete_graph(dir_name, 10000)
+    create_complete_graph(dir_name, 100)
     arq = open(dir_name, 'r')
 
     graph = Graph(arq)
     max_paths, paths = graph.get_disjoint_paths(int(origin), int(destiny))
-    print ("There can be maximum %d edge-disjoint paths from %d to %d" % (max_paths, int(origin), int(destiny)))
-    print("paths:", paths)
+    print(f'Temos no máximo {max_paths} caminhos disjuntos.')
+    print(f'Os caminhos são {paths}')
 
 # Programa principal
 if __name__ == '__main__':
