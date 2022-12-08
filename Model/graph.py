@@ -1,4 +1,5 @@
 from copy import deepcopy
+import time
 
 class Graph:
     def __init__(self, arq):
@@ -17,15 +18,9 @@ class Graph:
     def remove_edge(self, u, v):
         self.adj_list[u].remove(v)
 
-    def is_edge(self, u, v):
-        if v in self.adj_list[u]:
-            return 1
-        return 0
-
     def search(self, s, t, parent):
         visited = [False] * (self.num_nodes)
         queue = []
-
         queue.append(s)
         visited[s] = True
 
@@ -36,38 +31,35 @@ class Graph:
                     queue.append(val)
                     visited[val] = True
                     parent[val] = u
+                    
         if visited[t]:
             return True
         return False
 
     def get_disjoint_paths(self, source, sink):
+        start = time.time()
         aux_graph = deepcopy(self)
         parent = [-1] * (aux_graph.num_nodes)
         max_flow = 0
         paths = []
-
-        while aux_graph.search(source, sink, parent):
-            path_flow = float("Inf")
-            path = []
-            s = sink
-
-            while (s != source):
-                path_flow = min(path_flow, aux_graph.is_edge(parent[s], s))
-                path.append(s)
-                s = parent[s]
         
-            path.append(source)
-            path.reverse()
-            paths.append(path)
-            max_flow += path_flow
-
+        while aux_graph.search(source, sink, parent):
+            reversed_path = []
             v = sink
+
             while (v != source):
                 u = parent[v]
+                reversed_path.append(v)
                 aux_graph.remove_edge(u, v)
                 aux_graph.add_edge(v, u)
                 v = parent[v]
-        return max_flow, paths
+            
+            reversed_path.append(source)
+            path = reversed_path[::-1]
+            paths.append(path)
+            max_flow += 1
+        end = time.time()
+        return max_flow, paths, (end - start)
 
     def print(self):
         for i in range(self.num_nodes):

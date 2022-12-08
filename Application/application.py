@@ -69,13 +69,14 @@ def main():
     origin = sys.argv[2]
     destiny = sys.argv[3]
 
-    create_complete_graph(dir_name, 10)
+    create_complete_graph(dir_name, 10) # Retirar essa linha e passar o nome do arquivo por parametro caso queira usar outro grafo
     arq = open(dir_name, 'r')
 
     graph = Graph(arq)
-    max_paths, paths = graph.get_disjoint_paths(int(origin), int(destiny))
+    max_paths, paths, time = graph.get_disjoint_paths(int(origin), int(destiny))
     print(f'Temos no máximo {max_paths} caminhos disjuntos.')
     print(f'Os caminhos são {paths}')
+    print(f'A duração para achar os caminhos disjuntos foi de: {time} segundos')
 
 # Programa principal
 if __name__ == '__main__':
