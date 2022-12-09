@@ -69,7 +69,7 @@ def main():
     origin = sys.argv[2]
     destiny = sys.argv[3]
 
-    create_complete_graph(dir_name, 10) # Retirar essa linha e passar o nome do arquivo por parametro caso queira usar outro grafo
+    create_simple_graph(dir_name, 10000) # Retirar essa linha e passar o nome do arquivo por parametro caso queira usar outro grafo
     arq = open(dir_name, 'r')
 
     graph = Graph(arq)

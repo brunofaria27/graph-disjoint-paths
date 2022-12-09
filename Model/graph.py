@@ -18,11 +18,11 @@ class Graph:
     def remove_edge(self, u, v):
         self.adj_list[u].remove(v)
 
-    def search(self, s, t, parent):
+    def search(self, origin, destiny, parent):
         visited = [False] * (self.num_nodes)
         queue = []
-        queue.append(s)
-        visited[s] = True
+        queue.append(origin)
+        visited[origin] = True
 
         while queue:
             u = queue.pop(0)
@@ -32,34 +32,34 @@ class Graph:
                     visited[val] = True
                     parent[val] = u
                     
-        if visited[t]:
+        if visited[destiny]:
             return True
         return False
 
-    def get_disjoint_paths(self, source, sink):
+    def get_disjoint_paths(self, origin, destiny):
         start = time.time()
         aux_graph = deepcopy(self)
         parent = [-1] * (aux_graph.num_nodes)
-        max_flow = 0
+        max_paths = 0
         paths = []
         
-        while aux_graph.search(source, sink, parent):
+        while aux_graph.search(origin, destiny, parent):
             reversed_path = []
-            v = sink
+            v = destiny
 
-            while (v != source):
+            while (v != origin):
                 u = parent[v]
                 reversed_path.append(v)
                 aux_graph.remove_edge(u, v)
                 aux_graph.add_edge(v, u)
                 v = parent[v]
             
-            reversed_path.append(source)
+            reversed_path.append(origin)
             path = reversed_path[::-1]
             paths.append(path)
-            max_flow += 1
+            max_paths += 1
         end = time.time()
-        return max_flow, paths, (end - start)
+        return max_paths, paths, (end - start)
 
     def print(self):
         for i in range(self.num_nodes):
