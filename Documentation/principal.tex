@@ -1,0 +1,89 @@
+\documentclass[a4paper,12pt,Times]{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{abakos}  %pacote com padrão da Abakos baseado no padrão da PUC
+\usepackage{algorithmic}            
+\usepackage{algorithm}
+\usepackage{float}% http://ctan.org/pkg/float
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Capa da revista
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\monog}{Identificação do número  máximo  de  caminhos  disjuntos  em  arestas}
+\newcommand{\monogES}{Model - Magazine Abakós - ICEI - PUC Minas}
+\newcommand{\tipo}{Artigo}  % Especificar a seção tipo do trabalho: Artigo, Resumo, Tese, Dociê etc
+\newcommand{\origem}{Brasil}
+\newcommand{\editorial}{\textbf{Abakos}, Belo Horizonte,v. 1, n. 1, p. 00-00, Dec. 2022 - ISSN: 2316-9451}
+
+%%%%%%%%%%%%%%%%%INFORMAÇÕES SOBRE AUTOR PRINCIPAL %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\AutorA}{Bruno Rodrigues Faria}
+\newcommand{\funcaoA}{Programador}
+\newcommand{\emailA}{bruno.faria@sga.pucminas.br}
+\newcommand{\cursA}{Graduação Ciências da Computação - PUC Minas}
+
+\newcommand{\AutorB}{Guilherme Dantas Caldeira Fagundes}
+\newcommand{\funcaoB}{Programador}
+\newcommand{\emailB}{gdcfagundes@sga.pucminas.br}
+\newcommand{\cursB}{Graduação Ciências da Computação - PUC Minas}
+
+\newcommand{\AutorC}{Laura Iara Silva Santos Xavier}
+\newcommand{\funcaoC}{Programador}
+\newcommand{\emailC}{laura.iara@sga.pucminas.br}
+\newcommand{\cursC}{Graduação Ciências da Computação - PUC Minas}
+
+\newcommand{\univ}{Pontifícia Universidade Católica de Minas Gerais}
+
+\newcommand{\keyword}[1]{\textsf{#1}}
+
+\begin{document}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %% Pagina de titulo
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{flushleft}
+
+\begin{minipage} [c][5cm][b]{16.5cm}
+\includegraphics[scale=1.1]{figuras/pucmg.png} 
+\end{minipage}
+
+ \vspace{0cm} {
+ \singlespacing \Large{\monog \symbolfootnote[1]{Identificação de caminhos, disjuntos, arestas} \\ }
+  \normalsize{\monogES}
+ }
+\end{flushleft}
+\begin{flushright}
+\singlespacing 
+\normalsize{\AutorA \footnote{\funcaoA, E-mail:\emailA \\ \cursA, \origem. }} \\
+\normalsize{\AutorB \footnote{\funcaoB, E-mail:\emailB \\ \cursB, \origem. }} \\
+\normalsize{\AutorC \footnote{\funcaoC, E-mail:\emailC \\ \cursC, \origem. }} \\
+\end{flushright}
+\thispagestyle{empty}
+
+\begin{abstract}
+\noindent
+Há vários problemas a serem tratados com a descoberta do número máximo de caminhos disjuntos em arestas presentes em um grafo. O trabalho irá tratar de um método que faz a descoberta de quais são os caminhos além de mostrar os mesmos para o usuário com o intuito de auxiliar em futuros desenvolvimentos. Para isso, basta criar um grafo direcionado e falar qual a origem e destino, pois um caminho deve sair de um lugar e chegar a outro para que assim possa descobrir os caminhos disjuntos, o trabalho foi realizado na linguagem de programação Python e está disponibilizado para todos terem acesso.
+\\\textbf{\keyword{Palavras-chave: }}Grafos. Arestas. Busca. Caminhos. Disjuntos. 
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% INICIO DO TEXTO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{textos}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% FIM DO TEXTO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \selectlanguage{brazil}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Inicio bibliografia
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \newpage
+ \singlespace{
+ \bibliographystyle{abntex2-alf}
+ \bibliography{bibliografia}
+ }
+
+\end{document}
