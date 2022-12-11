@@ -1,12 +1,12 @@
 \section{Introdução}
-Atualmente a aplicação de grafos vem sendo cada vez mais utilizado no mundo da computação, por ser bastante versatil na resolução de problemas, Um exemplo disso é o aplicativo Waze que utiliza de grafos para traçar o caminho a ser percorrido para chegar de um local a outro. Pode-se observar com isso, que a descoberta dos caminhos disjuntos teria uma boa aplicação nesse aplicativo, pois caso o motorista não queira utilizar do caminho disponibilizado pelo aplicativo ele pode solicitar um novo caminho. Com isso, utilizando o método proposto no trabalho pode-se descobrir um novo caminho completamente diferente para o motorista, caso esse caminho exista, para que ele possa ir da origem até o destino de interesse.
+Atualmente, a aplicação de grafos vem sendo cada vez mais utilizada no mundo da computação, por ser bastante versatil na resolução de problemas. Um exemplo é o aplicativo Waze, que utiliza grafos para traçar o caminho a ser percorrido de um ponto a outro. Pode-se observar com isso, que a descoberta de caminhos disjuntos teria uma boa função nesse aplicativo, pois permitiria que o motorista que não queira utilizar o caminho inicial disponibilizado pelo aplicativo, possa solicitar um novo. Assim, utilizando o método proposto neste trabalho, é possível realizar uma busca para descobrir caminhos diferente para o usuário, caso exista algum..
 
 \section{Desenvolvimento}
 
 \subsection{Entrada de dados}
-Para a entrada de dados, foi utilizada a linha de comando para passar os argumentos. Os argumentos que são passados para o programa são respectivamente: o arquivo contendo a criação do grafo ou nome do arquivo que deseja criar o grafo; o vértice de origem para a busca dos caminhos; o vértice de destino para a busca chegar até ele.
+Para a entrada de dados, foi utilizada a linha de comando para passar os argumentos, que são respectivamente: o arquivo contendo o grafo criado ou nome do arquivo que deseja criar o grafo; o vértice de origem para a busca dos caminhos; o vértice de destino para a busca chegar até ele.
 
-A partir disso, para criar um grafo, basta fazer um arquivo \emph{.txt} passando na primeira linha do arquivo a quantidade de vértices, após isso cada linha do arquivo deve ser uma aresta presente no grafo direcionado, sendo da seguinte forma \emph{vértice\_saída vértice\_entrada}, onde vértice de saída é de onde a aresta sai e o vértice de entrada e onde a aresta entra, mostrado na Figura \ref{fig:figure1}.Essa situação se encaixa caso o grafo que deseja seja diferente dos grafos de teste abordados na Seção \ref{sec:results} do artigo.
+A partir disso, para criar um grafo, basta fazer um arquivo \emph{.txt} passando na primeira linha, a quantidade de vértices, e a lista de arestas nas próximas linhas, da seguinte forma \emph{vértice\_saída vértice\_entrada}, onde vértice de saída é de onde a aresta sai e o vértice de entrada e onde a aresta entra, mostrado na Figura \ref{fig:figure1}. Essa situação se encaixa caso o grafo que deseja seja diferente dos grafos de teste abordados na Seção \ref{sec:results} do artigo.
 
 \begin{figure}[ht]
     \centering
@@ -15,7 +15,7 @@ A partir disso, para criar um grafo, basta fazer um arquivo \emph{.txt} passando
     \label{fig:figure1}
 \end{figure}
 
-Com isso, ao passar por parâmetro o vértice de origem e o vértice de destino, eles serão utilizados para calcular o número máximo de caminhos disjuntos para o grafo desejado. Mostrando também todos os caminhos percorridos, utilizando os vértices passados, a Figura \ref{fig:figure2} onde exemplifica cada caminho disjunto em aresta, que é um caminho que sai de um vértice de destino até um vértice de origem sem repetir a aresta novamente.
+Com isso, ao passar por parâmetro o vértice de origem e o vértice de destino, eles serão utilizados para calcular o número máximo de caminhos disjuntos para o grafo desejado. Mostrando também todos os caminhos percorridos, utilizando os vértices passados, a Figura \ref{fig:figure2} exemplifica cada caminho disjunto em aresta, que é um caminho que sai de um vértice de destino até um vértice de origem sem repetir a aresta novamente.
 
 \newpage
 
@@ -157,7 +157,7 @@ A \emph{Topologia 2} baseia-se na ideia de possuir \emph{n} vértices, em que um
 \end{algorithm}
 
 \subsection{Topologia 3 - Grafo Completo}
-A terceira e última topologia, chamada de \emph{Topologia 3} utiliza de dois \emph{K-n} grafos (grafos completos formados por \emph{n} vértices). A partir desses dois grafos, que podem ser chamados de \(G_1\) e \(G_2\), são adicionadas duas arestas que ligam os grafos partindo de \(G_1\) e incidindo em \(G_2\).
+A terceira e última topologia, chamada de \emph{Topologia 3}, utiliza de dois \emph{K-n} grafos (grafos completos formados por \emph{n} vértices). A partir desses dois grafos, que podem ser chamados de \(G_1\) e \(G_2\), são adicionadas duas arestas que ligam os grafos partindo de \(G_1\) e incidindo em \(G_2\).
 
 \begin{figure}[hbt!]
     \centering
@@ -240,8 +240,130 @@ Para os resultados dos testes, achando os determinado tempos de execução para 
   \item \textbf{SSD}: 500GB
 \end{itemize}
 
+Com isso, uma análise dos gráficos de tempo em relação a quantidade de arestas dos grafos foram feitas, para cada topologia criada no trabalho.
+
+\subsubsection{Topologia 1 - Grafo Circular}
+
 \begin{center}
-    \begin{tabular}{|c | c | c | c|} 
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{|c | c |}
+     \hline
+        \multicolumn{2}{|c|}{\textbf{Tempo para execução da topologia 1 (segundos)}} \\
+     \hline
+         \emph{Quantidade de Vértices} & \emph{Tempo de execução}\\ [0.5ex] 
+     \hline
+         \emph{10} & 0.000s \\ 
+     \hline
+         \emph{100} & 0.001s \\
+     \hline
+         \emph{500} & 0.008s \\
+     \hline
+         \emph{1000} & 0.010s \\
+     \hline
+         \emph{10000} & 0.022s\\
+     \hline
+    \end{tabular}
+    \caption{Tempo para execução da topologia 1 (em segundos)}
+    \label{tab:tabela_topologia_1}
+\end{table}
+\end{center}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.6\textwidth]{figuras/circular.png}
+    \caption{Analise de tempo x quantidade de arestas - Grafo Circular}
+    \label{fig:figure20}
+\end{figure}
+
+Pode-se observar que no grafo circular o tempo de execução no inicio, onde a quantidade de arestas e menor o tempo de execução acompanha a quantidade de arestas. Com isso, pode-se concluir que ao aumentar o grafo o tempo de execução também aumenta.
+
+\pagebreak
+
+\subsubsection{Topologia 2 - Grafo Simples}
+
+\begin{center}
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{|c | c |}
+     \hline
+        \multicolumn{2}{|c|}{\textbf{Tempo para execução da topologia 2 (segundos)}} \\
+     \hline
+         \emph{Quantidade de Vértices} & \emph{Tempo de execução}\\ [0.5ex] 
+     \hline
+         \emph{10} & 0.000s \\ 
+     \hline
+         \emph{100} & 0.001s \\
+     \hline
+         \emph{500} & 1.930s \\
+     \hline
+         \emph{1000} & 14.130s \\
+     \hline
+         \emph{10000} & 98.913s \\
+     \hline
+    \end{tabular}
+    \caption{Tempo para execução da topologia 2 (em segundos)}
+    \label{tab:tabela_topologia_2}
+\end{table}
+    
+\end{center}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.6\textwidth]{figuras/simples.png}
+    \caption{Analise de tempo x quantidade de arestas - Grafo Simples}
+    \label{fig:figure30}
+\end{figure}
+
+Observa-se que no grafo simples o tempo de execução aumenta linearmente conforme a quantidade de arestas aumenta no grafo, para isso você deve levar em consideração a busca no grafo, que irá continuar sendo executada enquanto o algoritmo encontrar um caminho entre a origem e o destino.
+
+\pagebreak
+
+\subsubsection{Topologia 3 - Grafo Completo}
+
+\begin{center}
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{|c | c |}
+     \hline
+        \multicolumn{2}{|c|}{\textbf{Tempo para execução da topologia 3 (segundos)}} \\
+     \hline
+         \emph{Quantidade de Vértices} & \emph{Tempo de execução}\\ [0.5ex] 
+     \hline
+         \emph{10} & 0.000s \\ 
+     \hline
+         \emph{100} & 0.002s \\
+     \hline
+         \emph{500} & 0.014s \\
+     \hline
+         \emph{1000} & 0.210s \\
+     \hline
+         \emph{10000} & X \\
+     \hline
+    \end{tabular}
+    \caption{Tempo para execução da topologia 3 (segundos)}
+    \label{tab:tabela_topologia_3}
+\end{table}
+
+\end{center}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.6\textwidth]{figuras/completo.png}
+    \caption{Analise de tempo x quantidade de arestas - Grafo Completo}
+    \label{fig:figure40}
+\end{figure}
+
+Tendo em vista o grafo completo e sua ligação dos K-N grafos completos por apenas dois caminhos, observa-se que o tempo de execução aumenta conforme a quantidade de arestas presentes no grafo, o que é algo esperado já que os caminhos ficariam mais longos para a busca percorrer, sendo linear o tempo de acordo com a quantidade de arestas.
+
+\subsubsection{Analise tempo por quantidade de vértices}
+
+Para essa analise foi feita a quantidade utilizada a quantidade de vértices presentes no grafo. Com isso, teremos a analise de qual o grafo que tem o maior tempo de execução com certa quantidade de vértices, a mesma quantidade citada no inicio da Seção \ref{sec:results} para todos os testes.
+
+\begin{center}
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{|c | c | c | c|}
      \hline
         \multicolumn{4}{|c|}{\textbf{Tempo para execução por topologia (segundos)}} \\
      \hline
@@ -258,48 +380,12 @@ Para os resultados dos testes, achando os determinado tempos de execução para 
          \emph{10000} & 0.022s & 98.913s  & X \\
      \hline
     \end{tabular}
+        \caption{Tempo para execução por topologia e quantidade de vértices (em segundos)}
+    \label{tab:tabela_topologia_agregado}
+\end{table}
 \end{center}
 
-Com isso, uma análise dos gráficos de tempo em relação a quantidade de arestas dos grafos foram feitas, para cada topologia criada no trabalho.
-
-\subsubsection{Topologia 1 - Grafo Circular}
-
-Pode-se observar que no grafo circular o tempo de execução no inicio, onde a quantidade de arestas e menor o tempo de execução acompanha a quantidade de arestas. Com isso, pode-se concluir que ao aumentar o grafo o tempo de execução também aumenta.
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=.6\textwidth]{figuras/circular.png}
-    \caption{Analise de tempo x quantidade de arestas - Grafo Circular}
-    \label{fig:figure20}
-\end{figure}
-
-\subsubsection{Topologia 2 - Grafo Simples}
-
-Observa-se que no grafo simples o tempo de execução aumenta linearmente conforme a quantidade de arestas aumenta no grafo, para isso você deve levar em consideração a busca no grafo, que irá continuar sendo executada enquanto o algoritmo encontrar um caminho entre a origem e o destino.
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=.6\textwidth]{figuras/simples.png}
-    \caption{Analise de tempo x quantidade de arestas - Grafo Simples}
-    \label{fig:figure30}
-\end{figure}
-
-\subsubsection{Topologia 3 - Grafo Completo}
-
-Tendo em vista o grafo completo e sua ligação dos K-N grafos completos por apenas dois caminhos, observa-se que o tempo de execução aumenta conforme a quantidade de arestas presentes no grafo, o que é algo esperado já que os caminhos ficariam mais longos para a busca percorrer, sendo linear o tempo de acordo com a quantidade de arestas.
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=.6\textwidth]{figuras/completo.png}
-    \caption{Analise de tempo x quantidade de arestas - Grafo Completo}
-    \label{fig:figure40}
-\end{figure}
-
-\subsubsection{Analise tempo por quantidade de vértices}
-
-Para essa analise foi feita a quantidade utilizada a quantidade de vértices presentes no grafo. Com isso, teremos a analise de qual o grafo que tem o maior tempo de execução com certa quantidade de vértices, a mesma quantidade citada no inicio da Seção \ref{sec:results} para todos os testes.
-
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=.6\textwidth]{figuras/comparacao.png}
     \caption{Analise de tempo x quantidade de vértices}
