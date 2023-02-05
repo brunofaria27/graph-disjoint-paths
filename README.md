@@ -25,5 +25,3 @@ python3 "<nome_arquivo_entre_aspas>" <vertice_origem> <vertice_destino>
 ```
 
 Comando para testes dos programadores: `python .\application.py "grafo_test.txt" 0 5` 
-
-Link para a doc no overleaf: https://www.overleaf.com/1997197185jqqjjrcskgdm
